@@ -31,7 +31,7 @@
 ;;½ûÓÃ¹¤¾ßÀ¸
 ;;(tool-bar-mode -1)
 ;;½ûÓÃ²Ëµ¥À¸
-;;(menu-bar-mode -1)
+(menu-bar-mode -1)
 
 
 ;;Éè¶¨ÐÐ¾à
@@ -310,5 +310,6 @@ occurence of CHAR."
 (global-set-key (kbd "M-j") 'highlight-regexp)
 (global-set-key (kbd "M-J") 'unhighlight-regexp)
 
+(global-set-key (kbd "TAB") 'indent-for-tab-command)
 
 
