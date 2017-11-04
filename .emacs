@@ -3,19 +3,19 @@
 ;; (setenv "PATH" "/home/guoyao/:/user")
 (setq default-directory "~/")
 
-(add-to-list 'load-path "~/.emacs_dir/bin")
-(add-to-list 'load-path "~/.emacs_dir/lib")
+(add-to-list 'load-path "~/.emacs.d/bin")
+(add-to-list 'load-path "~/.emacs.d/lib")
 
 
 (load "base.el")			;; yes
 (load "go.el")
 (load "c.el")
 
-(load "~/.emacs_dir/lib/color-theme.el")
+(load "~/.emacs.d/lib/color-theme.el")
 (color-theme-initialize)
 (color-theme-arjen)
 
-(add-to-list 'load-path "~/.emacs_dir/lib/go-mode")
+(add-to-list 'load-path "~/.emacs.d/lib/go-mode")
 (require 'go-mode)
 
 ;---------------------
@@ -25,7 +25,7 @@
 ;;---------------------------end helm + gtags----------------------------------------
 
 ;;---------------------------auto-complete--------------------------
-(add-to-list 'load-path "~/.emacs_dir/lib/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/lib/auto-complete")
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs_dir/lib/auto-complete/ac-dict")
