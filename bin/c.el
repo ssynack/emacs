@@ -1,43 +1,3 @@
-(defun get-string-from-file (filePath)
-    "Return a list of lines of a file at filePath."
-    (with-temp-buffer
-      (insert-file-contents filePath)
-      (buffer-string)))
-
-(defun run-lint-warn-serial()
-  (interactive)
-  (shell-command (format "d:/emacs/lint/lint-nt.exe -fff -id:/emacs/lint/ -i%S -u %Sinclude.lnt -u d:/emacs/lint/std.lnt -u d:/emacs/lint/options.lnt  -u d:/emacs/lint/include.lnt -w2 %S " (helm-gtags--find-tag-directory) (helm-gtags--find-tag-directory) (buffer-name))) 
-  )
-
-
-(global-set-key (kbd "M-7") 'run-lint-warn-serial)
-
-(defun run-lint-warn-all-serial()
-  (interactive)
-  (shell-command (format "d:/emacs/lint/lint-nt.exe -fff -id:/emacs/lint/ -i%S -u %Sinclude.lnt -u d:/emacs/lint/std.lnt -u d:/emacs/lint/options.lnt  -u d:/emacs/lint/include.lnt -w2  %s" (helm-gtags--find-tag-directory) (helm-gtags--find-tag-directory) (replace-in-string (get-string-from-file (format "%sfile.lnt"  (helm-gtags--find-tag-directory))) (string ?\C-j) " " )))
-  )
-(global-set-key (kbd "M-8") 'run-lint-warn-all-serial)
-
-(defun run-lint-warn()
-  (interactive)
-  (shell-command (format "d:/emacs/lint/lint-nt.exe -fff -id:/emacs/lint/ -i%S -u %Sinclude.lnt -u d:/emacs/lint/std.lnt -u d:/emacs/lint/options.lnt -u d:/emacs/lint/options-extra.lnt -u d:/emacs/lint/include.lnt -w2 %S " (helm-gtags--find-tag-directory) (helm-gtags--find-tag-directory) (buffer-name))) 
-  )
-
-(defun run-lint-warn-hook ()
-  (local-set-key (kbd "C-7") 'run-lint-warn))
-
-(add-hook 'c-mode-hook 'run-lint-warn-hook)
-(add-hook 'c++-mode-hook 'run-lint-warn-hook)
-
-(defun run-lint-all()
-  (interactive)
-  (shell-command (format "d:/emacs/lint/lint-nt.exe -fff -id:/emacs/lint/ -i%S -u %Sinclude.lnt -u d:/emacs/lint/std.lnt -u d:/emacs/lint/options.lnt -u d:/emacs/lint/options-extra.lnt -u d:/emacs/lint/include.lnt -w2  %s" (helm-gtags--find-tag-directory) (helm-gtags--find-tag-directory) (replace-in-string (get-string-from-file (format "%sfile.lnt"  (helm-gtags--find-tag-directory))) (string ?\C-j) " " )))
-  )
-
-(defun run-lint-all-hook ()
-  (local-set-key (kbd "C-8") 'run-lint-all))
-(add-hook 'c-mode-hook 'run-lint-all-hook)
-
 ;;-----------------table -> space------------------------
 (defun untabify-file()
   (interactive)
@@ -47,7 +7,6 @@
     )
   (save-buffer)
   )
-(global-set-key [f11] 'untabify-file)
 
 ;;-----------------------dos2unix------------------------
 
@@ -71,10 +30,6 @@
     (c-indent-line-or-region)
     )
   )
-(global-set-key (kbd "C-y") 'yank-and-indent)
-
-
-
 
 (defun my-new-line-and-indent (arg)
   (interactive "^p")
@@ -106,7 +61,7 @@
  (newline-and-indent))
 
 ;; (global-set-key "C-<ret>" ')
-(global-set-key (kbd "C-RET") 'my-new-line-and-indent)
+
 
 
 ;;----------------------------------------------------------------------------
@@ -135,7 +90,7 @@
 
         )
   )
-(global-set-key (kbd "C-k") 'delete-intelligent)
+
 
 ;;------------------------------------------------------------
 
@@ -147,7 +102,7 @@
  (setq kill-ring-yank-pointer kill-ring)
  (setq last-command 'delete-word-backward)
 )
-(global-set-key (kbd "M-d") 'delete-word)
+
 
 ;; (global-set-key (kbd "C-<backspace>") 'backward-delete-char)
 
@@ -164,7 +119,7 @@
  (setq kill-ring-yank-pointer kill-ring)
  (setq last-command 'delete-word-backward)
 )
-(global-set-key (kbd "M-<backspace>") 'delete-word-backward)
+
 
 
 (defun big(arg)
@@ -177,7 +132,7 @@
   (previous-line)
   (c-indent-line-or-region)
   )
-(global-set-key (kbd "{") 'big)
+
 
 (defun middle(arg)
   (interactive "p")
@@ -186,7 +141,7 @@
   (insert-char ?\])
   (backward-char)
   )
-(global-set-key (kbd "[") 'middle)
+
 
 (defun small(arg)
   (interactive "p")
@@ -195,7 +150,7 @@
   (insert-char ?\))
   (backward-char)
   )
-(global-set-key (kbd "(") 'small)
+
 
 
 (defun double-qoute(arg)
@@ -205,7 +160,7 @@
   (insert-char ?\")
   (backward-char)
   )
-(global-set-key (kbd "\"") 'double-qoute)
+
 
 (defun qoute(arg)
   (interactive "p")
@@ -214,7 +169,7 @@
   (insert-char ?\')
   (backward-char)
   )
-(global-set-key (kbd "\'") 'qoute)
+
 
 
 (defun delete-blanks-backward()
@@ -247,8 +202,6 @@
     )
   (delete-reg (point) beg)
   )
-(global-set-key (kbd "C-<del>") 'delete-blanks-backward)
-
 
 (defun delete-blanks-forward()
   (interactive)
@@ -284,14 +237,28 @@
 (global-set-key (kbd "C-d") 'delete-blanks-forward)
 
 
-(defun gy-find-tag-arg (n)  
-  (interactive "sPattern: ")
-  (helm-gtags-find-pattern n)
-  )
-  
-;; (global-set-key (kbd "M-r") 'gy-find-tag-arg)
-
-;; (global-set-key (kbd "C-j") 'helm-buffers-list)
-
-
-
+(defun c-keymap-hook ()
+  (local-set-key (kbd "\"") 'go-double-qoute)
+  (local-set-key (kbd "\'") 'go-qoute)
+  (local-set-key (kbd "(") 'go-small)
+  (local-set-key (kbd "[") 'go-middle)
+  (local-set-key (kbd "{") 'go-big)
+  (local-set-key (kbd "C-y") 'yank-and-indent)
+  (local-set-key (kbd "M-t") 'helm-gtags-find-tag-from-here)
+  (local-set-key (kbd "M-r") 'go-find-referencs2)
+  (local-set-key (kbd "C-<del>") 'delete-blanks-backward)
+  (local-set-key (kbd "M-r") 'gy-find-tag-arg)
+  (local-set-key (kbd "M-<backspace>") 'delete-word-backward)
+  (local-set-key (kbd "{") 'big)
+  (local-set-key (kbd "\'") 'qoute)
+  (local-set-key (kbd "\"") 'double-qoute)
+  (local-set-key (kbd "(") 'small)
+  (local-set-key (kbd "[") 'middle)
+  (local-set-key (kbd "C-k") 'delete-intelligent)
+  (local-set-key [f11] 'untabify-file)
+  (local-set-key (kbd "C-y") 'yank-and-indent)
+  (local-set-key (kbd "C-RET") 'my-new-line-and-indent)
+  (local-set-key (kbd "M-d") 'delete-word)
+)
+(add-hook 'c-mode-hook 'c-keymap-hook)
+(add-hook 'c++-mode-hook 'c-keymap-hook)

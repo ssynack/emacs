@@ -1,0 +1,4 @@
+先安装emacs, melpa
+使用melpa 安装helm, helm-gtags, global
+
+M-x package-install helm...

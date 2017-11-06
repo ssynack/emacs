@@ -11,6 +11,9 @@
 (load "go.el")
 (load "c.el")
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
 (load "~/.emacs.d/lib/color-theme.el")
 (color-theme-initialize)
 (color-theme-arjen)
@@ -20,7 +23,9 @@
 
 ;---------------------
 ;;--helm + gtags--------------------------------
-;;(add-to-list 'load-path "~/.emacs_dir/lib/helm")
+
+(add-to-list 'load-path "~/.emacs.d/elpa/helm-20171104.2211/")
+(require 'helm-config)
 ;;(require 'helm-gtags)
 ;;---------------------------end helm + gtags----------------------------------------
 

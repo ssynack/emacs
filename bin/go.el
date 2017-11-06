@@ -88,9 +88,6 @@
   (local-set-key (kbd "C-7") 'golint-file)
   (local-set-key (kbd "M-t") 'godef-jump-other-window)
   (local-set-key (kbd "M-r") 'go-find-referencs2)
-  (local-set-key (kbd "C-.") 'hs-hide-block)
-  (local-set-key (kbd "M-.") 'hs-show-block)
-
 )
 (add-hook 'go-mode-hook 'go-keymap-hook)
 

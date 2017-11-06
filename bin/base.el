@@ -299,14 +299,14 @@ occurence of CHAR."
 (global-set-key (kbd "M-l") 'delete-word-backward)
 (global-set-key (kbd "C-l") 'delete-backward-char)
 
-(global-set-key (kbd "C-i") 'copy-intelligent)
-(global-set-key (kbd "M-i") 'cut-intelligent)
+(global-set-key (kbd "C-w") 'copy-intelligent)
+(global-set-key (kbd "M-w") 'cut-intelligent)
 
 
 (global-set-key (kbd "C-q") 'hs-hide-level)
 (global-set-key (kbd "M-q") 'hs-show-block)
 
-(global-set-key (kbd "C-j") 'buffer-menu-other-window)
+(global-set-key (kbd "C-j") 'helm-buffers-list)
 (global-set-key (kbd "M-j") 'highlight-regexp)
 (global-set-key (kbd "M-J") 'unhighlight-regexp)
 
