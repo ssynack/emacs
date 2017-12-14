@@ -42,5 +42,8 @@
 ;;(add-to-list 'ac-dictionary-directories "~/.emacs_dir/lib/auto-complete/ac-dict")
 ;;(ac-config-default)
 
+;;(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
 ;;-------------------------end auto-complete------------------------------
 
