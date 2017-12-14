@@ -86,8 +86,8 @@
   (local-set-key (kbd "C-y") 'go-yank-and-indent)
   (local-set-key (kbd "M-h") 'godoc-at-point2)
   (local-set-key (kbd "C-7") 'golint-file)
-  (local-set-key (kbd "M-t") 'godef-jump-other-window)
-  (local-set-key (kbd "M-r") 'go-find-referencs2)
+  (local-set-key (kbd "M-t") 'godef-jump)
+  (local-set-key (kbd "M-r") 'pop-tag-mark)
 )
 (add-hook 'go-mode-hook 'go-keymap-hook)
 
